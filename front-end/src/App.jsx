@@ -1,11 +1,7 @@
-import { useGetEmployeesQuery } from './features/api/apiSlice';
+import AppRoutes from './AppRoutes';
 
 function App() {
-  const { data } = useGetEmployeesQuery();
-  function teste() {
-    console.log(data);
-  }
-  return <div onClick={teste}>teste</div>;
+  return <AppRoutes />;
 }
 
 export default App;
