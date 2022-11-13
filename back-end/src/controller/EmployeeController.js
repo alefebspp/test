@@ -44,7 +44,7 @@ module.exports = {
       if (!employee) {
         res.status(400).json(console.log('Could not find employee!'));
       }
-      const deletedEmployee = await Employee.deleteOne(employee);
+      const deletedEmployee = await Employee.deleteOne({ _id: id });
       res.status(200).json(deletedEmployee);
     } catch (error) {
       res.status(400).json(error);
