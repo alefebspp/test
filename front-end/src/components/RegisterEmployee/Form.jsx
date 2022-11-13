@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
-import { Input, Icon } from '@chakra-ui/react';
-import { FaUserCircle } from 'react-icons/fa';
+import { Input } from '@chakra-ui/react';
+import Title from '../common/Title';
+import { FaUserPlus } from 'react-icons/fa';
 import { usePostEmployeeMutation } from '../../features/api/apiSlice';
 import '../../styles/css/RegisterEmployee.css';
 import useToastMessage from '../../hooks/useToastMessage';
@@ -49,11 +50,7 @@ const Form = () => {
 
   return (
     <div className="register">
-      <div className="register__titleGroup">
-        <Icon boxSize={8} color="#06283D" as={FaUserCircle} />
-        <h1 className="register__titleGroup__title">Registre um funcionário</h1>
-      </div>
-
+      <Title title="Registre um funcionário" icon={FaUserPlus} />
       <form
         id="form"
         onSubmit={handleSubmit(data => handlePostEmployee(data))}

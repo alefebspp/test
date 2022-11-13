@@ -51,7 +51,7 @@
   flex-direction: column;
 }
 .registerForm__input__error {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   color: red;
   font-weight: 600;
 }
