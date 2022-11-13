@@ -1,0 +1,42 @@
+@use './styles';
+.employees{
+  @include styles.center-elements();
+  flex-direction: column;
+  padding: 1rem;
+  
+}
+
+.employee{
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #F0F0F0;
+  width: 20rem;
+  &__nameGroup{
+    display: flex;
+    gap: 10px;
+    width: 10rem;
+  }
+  &__name{
+    font-size: styles.$mobile-font-size;
+  }
+  &__sectorGroup{
+    @include styles.center-elements();
+    width: 10rem;
+    justify-content: space-between;
+  }
+  &__sector{
+    font-size: styles.$mobile-font-size;
+  }
+  &__iconGroup{
+    display: flex;
+    gap: 1rem;
+  }
+}
+.employee__dark{
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #E0E0E0;
+  width: 20rem;
+}

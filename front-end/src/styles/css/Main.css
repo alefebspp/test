@@ -1,0 +1,45 @@
+.employees {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.employee {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #F0F0F0;
+  width: 20rem;
+}
+.employee__nameGroup {
+  display: flex;
+  gap: 10px;
+  width: 10rem;
+}
+.employee__name {
+  font-size: 0.8rem;
+}
+.employee__sectorGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10rem;
+  justify-content: space-between;
+}
+.employee__sector {
+  font-size: 0.8rem;
+}
+.employee__iconGroup {
+  display: flex;
+  gap: 1rem;
+}
+
+.employee__dark {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #E0E0E0;
+  width: 20rem;
+}/*# sourceMappingURL=Main.css.map */

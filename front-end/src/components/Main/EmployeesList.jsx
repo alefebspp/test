@@ -1,18 +1,24 @@
 import { useGetEmployeesQuery } from '../../features/api/apiSlice';
-
+import '../../styles/css/Main.css';
+import Employee from './Employee';
 const EmployeesList = () => {
   const { data } = useGetEmployeesQuery();
 
   return (
-    <div>
+    <div className="employees">
       {data?.map(employee => {
-        return (
-          <div>
-            <p>
-              Nome: {`${employee.firstName}` + ' ' + `${employee.lastName}`}
-            </p>
-            <p>Setor:{employee.sector}</p>
-          </div>
+        return data.indexOf(employee) % 2 == 0 ? (
+          <Employee
+            key={employee._id}
+            employee={employee}
+            divClassName="employee"
+          />
+        ) : (
+          <Employee
+            key={employee._id}
+            employee={employee}
+            divClassName="employee__dark"
+          />
         );
       })}
     </div>
