@@ -3,6 +3,7 @@ import { Input, Icon } from '@chakra-ui/react';
 import { FaUserCircle } from 'react-icons/fa';
 import { usePostEmployeeMutation } from '../../features/api/apiSlice';
 import '../../styles/css/RegisterEmployee.css';
+import useToastMessage from '../../hooks/useToastMessage';
 
 const Form = () => {
   const {
@@ -22,16 +23,28 @@ const Form = () => {
   });
 
   const [postEmployee] = usePostEmployeeMutation();
-
+  const { handleToastSuccessMessage, handleToastErrorMessage } =
+    useToastMessage();
   const handlePostEmployee = data => {
-    postEmployee({
-      firstName: data.firstName,
-      lastName: data.lastName,
-      age: data.age,
-      profession: data.profession,
-      sector: data.sector
-    });
-    reset();
+    try {
+      postEmployee({
+        firstName: data.firstName,
+        lastName: data.lastName,
+        age: data.age,
+        profession: data.profession,
+        sector: data.sector
+      });
+      reset();
+      handleToastSuccessMessage(
+        'Funcionário cadastrado!',
+        'O funcionário foi criado com sucesso!'
+      );
+    } catch (error) {
+      handleToastErrorMessage(
+        'Impossível Cadastrar...',
+        'Foi impossível cadastrar o funcionário.'
+      );
+    }
   };
 
   return (
