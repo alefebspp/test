@@ -1,14 +1,38 @@
 import { useForm } from 'react-hook-form';
 import { Input, Icon } from '@chakra-ui/react';
 import { FaUserCircle } from 'react-icons/fa';
+import { usePostEmployeeMutation } from '../../features/api/apiSlice';
 import '../../styles/css/RegisterEmployee.css';
 
 const Form = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
-  } = useForm();
+    formState: { isDirty, isValid },
+    reset
+  } = useForm({
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      age: '',
+      profession: '',
+      sector: ''
+    },
+    mode: 'onChange'
+  });
+
+  const [postEmployee] = usePostEmployeeMutation();
+
+  const handlePostEmployee = data => {
+    postEmployee({
+      firstName: data.firstName,
+      lastName: data.lastName,
+      age: data.age,
+      profession: data.profession,
+      sector: data.sector
+    });
+    reset();
+  };
 
   return (
     <div className="register">
@@ -18,82 +42,74 @@ const Form = () => {
       </div>
 
       <form
-        onSubmit={handleSubmit(data => console.log(data))}
+        id="form"
+        onSubmit={handleSubmit(data => handlePostEmployee(data))}
         className="registerForm"
         action=""
       >
         <div className="registerForm__input">
           <label className="registerForm__input__label">Nome</label>
           <Input
-            {...register('firstName', { required: 'Campo obrigatório!' })}
+            {...register('firstName', { required: true })}
             variant="outline"
             size="md"
             type="text"
             focusBorderColor="#06283D"
             autoComplete="off"
           />
-          <span className="registerForm__input__error">
-            {errors.firstName?.message}
-          </span>
         </div>
 
         <div className="registerForm__input">
           <label className="registerForm__input__label">Sobrenome</label>
           <Input
-            {...register('lastName', { required: 'Campo obrigatório!' })}
+            {...register('lastName', { required: true })}
             variant="outline"
             size="md"
             focusBorderColor="#06283D"
             type="text"
             autoComplete="off"
           />
-          <span className="registerForm__input__error">
-            {errors.lastName?.message}
-          </span>
         </div>
         <div className="registerForm__input">
           <label className="registerForm__input__label">Idade</label>
           <Input
-            {...register('age', { required: 'Campo obrigatório!' })}
+            {...register('age', { required: true })}
             variant="outline"
             size="md"
             focusBorderColor="#06283D"
             type="number"
             autoComplete="off"
           />
-          <span className="registerForm__input__error">
-            {errors.age?.message}
-          </span>
         </div>
         <div className="registerForm__input">
           <label className="registerForm__input__label">Profissão</label>
           <Input
-            {...register('profession', { required: 'Campo obrigatório!' })}
+            {...register('profession', { required: true })}
             variant="outline"
             size="md"
             focusBorderColor="#06283D"
             type="text"
             autoComplete="off"
           />
-          <span className="registerForm__input__error">
-            {errors.profession?.message}
-          </span>
         </div>
         <div className="registerForm__input">
           <label className="registerForm__input__label">Setor</label>
           <Input
-            {...register('sector', { required: 'Campo obrigatório!' })}
+            {...register('sector', { required: true })}
             variant="outline"
             size="md"
             focusBorderColor="#06283D"
             type="text"
             autoComplete="off"
           />
-          <span className="registerForm__input__error">
-            {errors.sector?.message}
-          </span>
         </div>
-        <button className="registerForm__button">Registrar</button>
+        {!isDirty || !isValid ? (
+          <button disabled className="registerForm__disabledButton">
+            Registrar
+          </button>
+        ) : (
+          <button className="registerForm__button">Registrar</button>
+        )}
       </form>
     </div>
   );

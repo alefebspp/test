@@ -6,8 +6,15 @@ export const apiSlice = createApi({
   endpoints: builder => ({
     getEmployees: builder.query({
       query: () => '/employee/all'
+    }),
+    postEmployee: builder.mutation({
+      query: employee => ({
+        method: 'POST',
+        url: '/employee/create',
+        body: employee
+      })
     })
   })
 });
 
-export const { useGetEmployeesQuery } = apiSlice;
+export const { useGetEmployeesQuery, usePostEmployeeMutation } = apiSlice;
