@@ -1,0 +1,46 @@
+@use './styles';
+
+.register{
+  width: 100vw;
+  @include styles.center-elements();
+  flex-direction: column;
+
+  &__titleGroup{
+    display: flex;
+    @include styles.center-elements();
+    padding: 2rem;
+    gap: 1rem;
+    &__title{
+      font-weight: 500;
+    }
+  }
+}
+
+
+.registerForm{
+  border: 2px solid #06283D;
+  padding: 3rem;
+  border-radius: 10px;
+  @include styles.center-elements();
+  gap: 1rem;
+  flex-direction: column;
+  &__button{
+    background-color: #06283D;
+    color: white;
+    width: 10rem;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  &__input{
+    display: flex;
+    flex-direction: column;
+    &__error{
+      font-size: styles.$mobile-font-size;
+      color: red;
+      font-weight: 600;
+    }
+    &__label{
+      font-weight: 700;
+    }
+  }
+}
