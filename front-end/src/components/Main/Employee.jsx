@@ -1,5 +1,5 @@
 import { Icon, IconButton } from '@chakra-ui/react';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { FaUserCircle, FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { EmployeeContext } from '../../context/EmployeeContext';

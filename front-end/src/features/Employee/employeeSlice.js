@@ -8,12 +8,12 @@ export const employeeSlice = createSlice({
   name: 'employee',
   initialState,
   reducers: {
-    removeEmployees: (state, action) => {
-      ids.push(action.payload);
+    selectEmployee: (state, action) => {
+      state.ids.push(action.payload);
     }
   }
 });
 
 export default employeeSlice.reducer;
 
-export const { removeEmployees } = employeeSlice.actions;
+export const { selectEmployee } = employeeSlice.actions;
