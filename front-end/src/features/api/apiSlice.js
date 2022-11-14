@@ -8,6 +8,10 @@ export const apiSlice = createApi({
       query: () => '/employee/all',
       providesTags: ['Employees']
     }),
+    getEmployee: builder.query({
+      query: id => `/employee/${id}`,
+      providesTags: ['Employee']
+    }),
     postEmployee: builder.mutation({
       query: employee => ({
         method: 'POST',
@@ -29,5 +33,6 @@ export const apiSlice = createApi({
 export const {
   useGetEmployeesQuery,
   usePostEmployeeMutation,
-  useDeleteEmployeeMutation
+  useDeleteEmployeeMutation,
+  useGetEmployeeQuery
 } = apiSlice;

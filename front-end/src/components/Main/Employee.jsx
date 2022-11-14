@@ -1,10 +1,22 @@
 import { Icon, IconButton } from '@chakra-ui/react';
+import { useContext } from 'react';
 import { FaUserCircle, FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
-import { useDeleteEmployeeMutation } from '../../features/api/apiSlice';
+import { EmployeeContext } from '../../context/EmployeeContext';
+import {
+  useDeleteEmployeeMutation,
+  useGetEmployeeQuery
+} from '../../features/api/apiSlice';
 const Employee = ({ employee, divClassName }) => {
   const [deleteEmployee] = useDeleteEmployeeMutation();
+  const { data } = useGetEmployeeQuery(employee._id);
+  const { setEmployee } = useContext(EmployeeContext);
   const navigate = useNavigate();
+
+  const handleGetEmployee = () => {
+    setEmployee(data);
+    navigate('/employee');
+  };
 
   return (
     <div className={divClassName}>
@@ -22,7 +34,7 @@ const Employee = ({ employee, divClassName }) => {
       <div className="employee__iconGroup">
         <IconButton
           size="xs"
-          onClick={() => navigate('/employee')}
+          onClick={handleGetEmployee}
           icon={<FaEdit color="green" />}
           boxShadow="0px 0px 6px 0px rgba(0, 0, 0, 0.5)"
         />

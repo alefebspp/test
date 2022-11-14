@@ -50,6 +50,17 @@ module.exports = {
       res.status(400).json(error);
     }
   },
+  async deleteEmployees(req, res) {
+    try {
+      const { ids } = req.body;
+      const deletedEmployees = await Employee.deleteMany({
+        _id: { $in: ids }
+      });
+      res.status(200).json(deletedEmployees);
+    } catch (error) {
+      res.status(400).json(error);
+    }
+  },
   async updateEmployee(req, res) {
     const { id } = req.params;
     const { firstName, lastName, age, profession, sector } = req.body;

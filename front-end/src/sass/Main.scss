@@ -50,3 +50,31 @@
   background-color: #C8C8C8;
   width: 20rem;
 }
+
+.employeeInfo{
+  @include styles.center-elements();
+  flex-direction: column;
+  &__infos{
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
+  &__info{
+  background-color: #D3D3D3;
+  padding: 1rem;
+  width: 15rem;
+  border-radius: 10px;
+  @include styles.center-elements();
+  justify-content: space-between;
+  box-shadow:0px 0px 6px 0px rgba(0, 0, 0, 0.5) ;
+  &__text{
+    font-size: styles.$mobile-font-size;
+    font-weight: 500;
+  }
+  &__form{
+    @include styles.center-elements();
+    flex-direction: column;
+    gap: 1rem;
+  }
+  }
+}
