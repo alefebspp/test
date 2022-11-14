@@ -3,18 +3,15 @@ import { useContext, useEffect, useState } from 'react';
 import { FaUserCircle, FaTrashAlt, FaEdit } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { EmployeeContext } from '../../context/EmployeeContext';
-import {
-  useDeleteEmployeeMutation,
-  useGetEmployeeQuery
-} from '../../features/api/apiSlice';
+import { useDeleteEmployeeMutation } from '../../features/api/apiSlice';
 const Employee = ({ employee, divClassName }) => {
   const [deleteEmployee] = useDeleteEmployeeMutation();
-  const { data } = useGetEmployeeQuery(employee._id);
+
   const { setEmployee } = useContext(EmployeeContext);
   const navigate = useNavigate();
 
   const handleGetEmployee = () => {
-    setEmployee(data);
+    setEmployee(employee);
     navigate('/employee');
   };
 

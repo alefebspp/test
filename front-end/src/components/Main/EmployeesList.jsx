@@ -42,7 +42,7 @@ const EmployeesList = () => {
 
       {data?.map(employee => {
         return data.indexOf(employee) % 2 == 0 ? (
-          <div>
+          <div key={employee._id}>
             <input
               id={employee._id}
               value={employee._id}
@@ -50,14 +50,10 @@ const EmployeesList = () => {
               checked={selected.some(val => val === employee._id)}
               onChange={handleChange}
             />
-            <Employee
-              key={employee._id}
-              employee={employee}
-              divClassName="employee"
-            />
+            <Employee employee={employee} divClassName="employee" />
           </div>
         ) : (
-          <div>
+          <div key={employee._id}>
             <input
               id={employee._id}
               value={employee._id}
@@ -65,11 +61,7 @@ const EmployeesList = () => {
               checked={selected.some(val => val === employee._id)}
               onChange={handleChange}
             />
-            <Employee
-              key={employee._id}
-              employee={employee}
-              divClassName="employee__dark"
-            />
+            <Employee employee={employee} divClassName="employee__dark" />
           </div>
         );
       })}

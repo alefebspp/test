@@ -10,7 +10,7 @@ export const apiSlice = createApi({
     }),
     getEmployee: builder.query({
       query: id => `/employee/${id}`,
-      providesTags: ['Employee']
+      providesTags: ['Employees']
     }),
     postEmployee: builder.mutation({
       query: employee => ({
@@ -34,6 +34,14 @@ export const apiSlice = createApi({
         body: ids
       }),
       invalidatesTags: ['Employees']
+    }),
+    updateEmployee: builder.mutation({
+      query: ({ _id, ...patch }) => ({
+        method: 'PATCH',
+        url: `/employee/update/${_id}`,
+        body: patch
+      }),
+      invalidatesTags: ['Employees']
     })
   })
 });
@@ -43,5 +51,6 @@ export const {
   usePostEmployeeMutation,
   useDeleteEmployeeMutation,
   useGetEmployeeQuery,
-  useDeleteEmployeesMutation
+  useDeleteEmployeesMutation,
+  useUpdateEmployeeMutation
 } = apiSlice;

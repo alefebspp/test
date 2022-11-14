@@ -5,6 +5,7 @@ import { FaUserPlus } from 'react-icons/fa';
 import { usePostEmployeeMutation } from '../../features/api/apiSlice';
 import '../../styles/css/RegisterEmployee.css';
 import useToastMessage from '../../hooks/useToastMessage';
+import ConditionalButton from '../common/ConditionalButton';
 
 const Form = () => {
   const {
@@ -113,13 +114,7 @@ const Form = () => {
             autoComplete="off"
           />
         </div>
-        {!isDirty || !isValid ? (
-          <button disabled className="registerForm__disabledButton">
-            Registrar
-          </button>
-        ) : (
-          <button className="registerForm__button">Registrar</button>
-        )}
+        <ConditionalButton condition1={isDirty} condition2={isValid} />
       </form>
     </div>
   );
