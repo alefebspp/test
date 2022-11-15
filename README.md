@@ -4,6 +4,8 @@ o comando npm install no diretório de front-end e back-end para baixar as depen
 minal.Execute o comando npm run start. O terminal deverá exibir as seguintes mensagens: App is running e Connected to DataBase. Acesso o diretório front-end e abra 
 seu caminho em algum terminal. Execute o comando npm run dev. O terminal deverá exibir a seguinte mensagen: Local: http://127.0.0.1:5173/. Copie o endereço e cole
 em um navegador de sua preferência para executar o teste.
+OBSERVAÇÕES: A página de registro da aplicação e a página individual do funcionário quando recarregadas interrompem a aplicação, uma vez que dependem de um estado.
+Sendo assim, caso a aplicação seja interrompida, volte para a url sem parâmetros.
 
 ![test-image](https://user-images.githubusercontent.com/106111153/201717166-7acbe3a9-67ae-43e4-8172-606f23a3904b.png) 
 
